@@ -43,3 +43,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const [theme, setTheme] = useState(false);
