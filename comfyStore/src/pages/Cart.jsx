@@ -1,4 +1,5 @@
-const Cart = () => {
-  return <h1 className="text-4xl">Cart</h1>;
-};
-export default Cart;
+import React from "react";
+
+export default function Cart() {
+  return <div>Cart</div>;
+}
