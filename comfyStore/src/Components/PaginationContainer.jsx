@@ -14,5 +14,43 @@ export default function PaginationContainer() {
   };
   if (pageCount < 2) return null;
 
-  return <div>PaginationContainer</div>;
+  return (
+    <div className="mt-16 flex justify-center">
+      <div className="join">
+        <button
+          className="btn btn:xs sm:btn:md join-item"
+          onClick={() => {
+            let prevPage = page - 1;
+            if (prevPage < 1) prevPage = pageCount;
+            handlePageChange(prevPage);
+          }}
+        >
+          Prev
+        </button>
+        {pages.map((pageNumber) => {
+          return (
+            <button
+              onClick={() => handlePageChange(pageNumber)}
+              key={pageNumber}
+              className={`btn sm:btn-md border-none join-item ${
+                pageNumber === page ? "bg-base-300 border-base-900" : ""
+              }`}
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
+        <button
+          className="btn btn:xs sm:btn:md join-item"
+          onClick={() => {
+            let nextPage = page + 1;
+            if (nextPage > pageCount) nextPage = 1;
+            handlePageChange(nextPage);
+          }}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
 }

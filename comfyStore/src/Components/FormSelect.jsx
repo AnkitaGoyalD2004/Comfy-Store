@@ -4,7 +4,7 @@ const FormSelect = ({ label, name, list, defaultValue, size }) => {
       <label htmlFor={name} className="label">
         <span className="label-text capitalize">{label}</span>
       </label>
-      <select
+      <elect
         name={name}
         id={name}
         className={`select select-bordered ${size}`}
@@ -17,7 +17,7 @@ const FormSelect = ({ label, name, list, defaultValue, size }) => {
             </option>
           );
         })}
-      </select>
+      </elect>
     </div>
   );
 };
