@@ -13,7 +13,7 @@ import {
 } from "./pages";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { ErrorElement } from "./components/ErrorElement";
+import { ErrorElement } from "./Components";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { loader as productsLoader } from "./pages/Products";
 import { loader as landingLoader } from "./pages/Landing";
