@@ -1,7 +1,8 @@
 import { useLoaderData, Link } from "react-router-dom";
-import { customFetch } from "../utils";
+import { customFetch } from "../utils/index";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`);
   console.log(response.data);
@@ -10,15 +11,32 @@ export const loader = async ({ params }) => {
 };
 
 export default function SingleProduct() {
-  const { products } = useLoaderData();
+  const dispatch = useDispatch();
+
+  const { product } = useLoaderData();
   const { image, title, price, description, colors, company } =
-    products.attributes;
+    product.attributes;
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
+  const cartProduct = {
+    cartID: product.id + productColor,
+    productID: product.id,
+    image,
+    title,
+    price,
+    amount,
+    productColor,
+    company,
+  };
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }));
+  };
   const handleAmount = (e) => {
     setAmount(parseInt(e.target.value));
   };
+  console.log(product);
+
   return (
     <section>
       <div className="text-md breadcrumbs">
@@ -46,7 +64,7 @@ export default function SingleProduct() {
             {company}
           </h4>
 
-          <p className="mt-3 text-xl">{price}</p>
+          <p className="mt-3 text-xl"> ₹ {price} /-</p>
 
           <p className="mt-6 leading-8">{description}</p>
 
@@ -90,10 +108,7 @@ export default function SingleProduct() {
           </div>
           {/* CART BUTTON */}
           <div className="mt-10 ">
-            <button
-              className="btn btn-secondary btn-md"
-              onClick={() => console.log("add to bag")}
-            >
+            <button className="btn btn-secondary btn-md" onClick={addToCart}>
               Add to bag
             </button>
           </div>
