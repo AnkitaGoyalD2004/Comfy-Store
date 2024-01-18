@@ -11,7 +11,7 @@ import {
   Checkout,
   Orders,
 } from "./pages";
-import { loader as singlePageLoader } from "./pages/SingleProduct";
+// import { loader as singlePageLoader } from "./pages/SingleProduct";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { ErrorElement } from "./components";
@@ -37,12 +37,12 @@ const router = createBrowserRouter([
         loader: productsLoader,
         element: <Products />,
       },
-      {
-        path: "products/:id",
-        errorElement: <ErrorElement />,
-        loader: singlePageLoader,
-        element: <SingleProduct />,
-      },
+      // {
+      //   path: "products/:id",
+      //   errorElement: <ErrorElement />,
+      //   loader: singlePageLoader,
+      //   element: <SingleProduct />,
+      // },
       {
         path: "cart",
         element: <Cart />,

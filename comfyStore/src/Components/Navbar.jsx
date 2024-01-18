@@ -10,7 +10,6 @@ const Navbar = () => {
     dim: "dim",
   };
   const getThemeFromLocalStorage = () => {
-    console.log(`theme is ${localStorage.getItem("theme")}`);
     return localStorage.getItem("theme") || themes.autumn;
   };
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
