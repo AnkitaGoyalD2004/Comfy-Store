@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 import { ToastContainer } from "react-toastify";
-import { store } from "../src/store.js";
+import { store } from "./store.js";
 import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
