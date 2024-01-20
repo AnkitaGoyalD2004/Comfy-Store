@@ -28,7 +28,6 @@ export const action =
     }
   };
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,6 +43,13 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       toast.error("Error logging you in, please try agian later");
+      if (error?.response?.status === 401) {
+        toast.warn("Unauthorised, Please register first  ");
+      }
+      if (error?.response?.status === 403) {
+        toast.warn("Forbidden, Please check your credentials ");
+      }
+      return null;
     }
   };
   return (
