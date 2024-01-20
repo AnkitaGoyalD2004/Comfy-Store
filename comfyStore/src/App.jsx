@@ -11,13 +11,19 @@ import {
   Checkout,
   Orders,
 } from "./pages";
-// import { loader as singlePageLoader } from "./pages/SingleProduct";
-import Login from "./components/Login";
+import { loader as singlePageLoader } from "./pages/SingleProduct";
+import Login from "./Components/Login";
 import Register from "./components/Register";
 import { ErrorElement } from "./components";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { loader as productsLoader } from "./pages/Products";
 import { loader as landingLoader } from "./pages/Landing";
+import { action as registerAction } from "./components/Register";
+import { action as loginAction } from "./components/Login";
+import { store } from "./app/store";
+import { loader as checkoutLoader } from "./pages/Checkout";
+import { action as checkoutAction } from "./components/CheckoutForm";
+import { loader as orderLoader } from "./pages/Orders";
 
 const router = createBrowserRouter([
   {
@@ -37,12 +43,12 @@ const router = createBrowserRouter([
         loader: productsLoader,
         element: <Products />,
       },
-      // {
-      //   path: "products/:id",
-      //   errorElement: <ErrorElement />,
-      //   loader: singlePageLoader,
-      //   element: <SingleProduct />,
-      // },
+      {
+        path: "products/:id",
+        errorElement: <ErrorElement />,
+        loader: singlePageLoader,
+        element: <SingleProduct />,
+      },
       {
         path: "cart",
         element: <Cart />,
@@ -50,10 +56,14 @@ const router = createBrowserRouter([
       { path: "about", element: <About /> },
       {
         path: "checkout",
+        errorElement: <ErrorElement />,
+        action: checkoutAction(store),
+        loader: checkoutLoader(store),
         element: <Checkout />,
       },
       {
         path: "orders",
+        loader: orderLoader(store),
         element: <Orders />,
       },
     ],
@@ -62,10 +72,12 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
+    action: loginAction(store),
   },
   {
     path: "/register",
     element: <Register />,
+    action: registerAction,
     errorElement: <Error />,
   },
 ]);
