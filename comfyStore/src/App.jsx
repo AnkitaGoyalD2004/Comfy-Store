@@ -19,10 +19,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { loader as productsLoader } from "./pages/Products";
 import { loader as landingLoader } from "./pages/Landing";
 import { action as registerAction } from "./components/Register";
-// import { action as loginAction } from "./Components/";
+import { action as loginAction } from "./components/";
 import { store } from "./store";
-// import { loader as checkoutLoader } from "./pages/Checkout";
-// import { action as checkoutAction } from "./Components/";
+import { loader as checkoutLoader } from "./pages/Checkout";
+import { action as checkoutAction } from "./Components/";
 import { loader as orderLoader } from "./pages/Orders";
 
 const router = createBrowserRouter([
