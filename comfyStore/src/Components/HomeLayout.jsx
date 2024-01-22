@@ -18,7 +18,7 @@
 // export default HomeLayout;
 
 import { Outlet, useNavigation } from "react-router-dom";
-import { NavBar, Loading, Header } from "../Components";
+import { NavBar, Loading, Header } from "../components";
 const HomeLayout = () => {
   const navigation = useNavigation();
   const isPageLoading = navigation.state === "loading";

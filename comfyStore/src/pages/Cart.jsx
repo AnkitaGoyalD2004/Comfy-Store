@@ -1,11 +1,12 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { CartItemsList, SectionTitle, CartTotals } from "../components";
 import { Link } from "react-router-dom";
 
-export default function Cart() {
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+const Cart = () => {
   const user = useSelector((state) => state.userState.user);
+
+  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+
   if (numItemsInCart === 0) {
     return <SectionTitle text="Your cart is empty" />;
   }
@@ -21,15 +22,16 @@ export default function Cart() {
           <CartTotals />
           {user ? (
             <Link to="/checkout" className="btn btn-primary btn-block mt-8">
-              Proceed to Checkout
+              proceed to checkout
             </Link>
           ) : (
-            <Link to="/login" className="btn btn-secondary btn-block mt-8">
-              Please Login First
+            <Link to="/login" className="btn btn-primary btn-block mt-8">
+              please login
             </Link>
           )}
         </div>
       </div>
     </>
   );
-}
+};
+export default Cart;

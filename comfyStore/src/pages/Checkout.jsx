@@ -1,42 +1,31 @@
-import React from "react";
 import { useSelector } from "react-redux";
-import { SectionTitle, CartTotals, CheckoutForm } from "../Components";
-import { useNavigate } from "react-router-dom";
-import { redirect } from "react-router-dom";
+import { CheckoutForm, SectionTitle, CartTotals } from "../components";
 import { toast } from "react-toastify";
+import { redirect } from "react-router-dom";
 
-export const loader = (store) => async () => {
+export const loader = (store) => () => {
   const user = store.getState().userState.user;
+
   if (!user) {
-    toast.warn("You must login first");
+    toast.warn("You must be logged in to checkout");
     return redirect("/login");
   }
   return null;
 };
-export default function Checkout() {
-  const cartTotal = useSelector((state) => state.cartState.cartTotal);
-  const navigate = useNavigate();
 
+const Checkout = () => {
+  const cartTotal = useSelector((state) => state.cartState.cartTotal);
   if (cartTotal === 0) {
-    return (
-      <div>
-        <SectionTitle text="Cart is Empty" />
-        <button
-          className="btn btn-outline mt-5  "
-          onClick={() => navigate("/products")}
-        >
-          Shop Here
-        </button>
-      </div>
-    );
+    return <SectionTitle text="Your cart is empty" />;
   }
   return (
     <>
-      <SectionTitle text="Place your order " />
-      <div className="mt-8 grid gap-8  md:grid-cols-2 items-start">
+      <SectionTitle text="place your order" />
+      <div className="mt-8 grid gap-8 md:grid-cols-2 items-start">
         <CheckoutForm />
         <CartTotals />
       </div>
     </>
   );
-}
+};
+export default Checkout;
