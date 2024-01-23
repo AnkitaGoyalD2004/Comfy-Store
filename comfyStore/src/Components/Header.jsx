@@ -1,26 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../features/users/userSlice";
 import { clearCart } from "../features/cart/cartSlice";
+import { logoutUser } from "../features/users/userSlice";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.userState.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const queryClient = useQueryClient();
+  const user = useSelector((state) => state.userState.user);
+
   const handleLogout = () => {
+    navigate("/");
     dispatch(clearCart());
     dispatch(logoutUser());
-    navigate("/");
+    queryClient.removeQueries();
   };
 
   return (
-    <header className=" bg-neutral py-2 text-neutral-content ">
-      <div className="align-element flex justify-center sm:justify-end ">
+    <header className="bg-neutral py-2 text-neutral-content">
+      <div className="align-element flex justify-center sm:justify-end">
         {user ? (
           <div className="flex gap-x-2 sm:gap-x-8 items-center">
             <p className="text-xs sm:text-sm">Hello, {user.username}</p>
             <button
-              className="btn btn-xs btn-outline btn-primary "
+              className="btn btn-xs btn-outline btn-primary"
               onClick={handleLogout}
             >
               logout
@@ -32,7 +36,7 @@ const Header = () => {
               Sign in / Guest
             </Link>
             <Link to="/register" className="link link-hover text-xs sm:text-sm">
-              Create an Account
+              Create Account
             </Link>
           </div>
         )}

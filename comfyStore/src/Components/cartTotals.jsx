@@ -1,30 +1,36 @@
 import { useSelector } from "react-redux";
+import { formatPrice } from "../utils";
 
-export default function CartTotals() {
+const CartTotals = () => {
   const { cartTotal, shipping, tax, orderTotal } = useSelector(
     (state) => state.cartState
   );
-  return (
-    <div className="card g-base-200">
-      <div className="card-body">
-        <p className="flex justify-between text-xs border-b border-base-300 pb-2">
-          <span> Subtotal </span>
-          <span className="font-medium">₹ {cartTotal}</span>
-        </p>
 
+  return (
+    <div className="card bg-base-200">
+      <div className="card-body">
+        {/* SUBTOTAL */}
         <p className="flex justify-between text-xs border-b border-base-300 pb-2">
-          <span> Shipping </span>
-          <span className="font-medium">₹ {shipping}</span>
+          <span>Subtotal</span>
+          <span className="font-medium">{formatPrice(cartTotal)}</span>
         </p>
+        {/* SHIPPING */}
         <p className="flex justify-between text-xs border-b border-base-300 pb-2">
-          <span> Tax </span>
-          <span className="font-medium">₹ {tax.toFixed(2)}</span>
+          <span>Shipping</span>
+          <span className="font-medium">{formatPrice(shipping)}</span>
         </p>
-        <p className="mt-4 flex justify-between text-sm pb-2">
-          <span className="font-bold">Order Total</span>
-          <span className="font=bold">₹ {orderTotal}</span>
+        {/* Tax */}
+        <p className="flex justify-between text-xs border-b border-base-300 pb-2">
+          <span>Tax</span>
+          <span className="font-medium">{formatPrice(tax)}</span>
+        </p>
+        {/* Order Total */}
+        <p className="flex justify-between text-sm mt-4 pb-2">
+          <span>Order Total</span>
+          <span className="font-medium">{formatPrice(orderTotal)}</span>
         </p>
       </div>
     </div>
   );
-}
+};
+export default CartTotals;

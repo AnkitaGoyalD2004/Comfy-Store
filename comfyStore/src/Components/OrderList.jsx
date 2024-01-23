@@ -1,10 +1,9 @@
-import { redirect, useLoaderData } from "react-router-dom";
-import { toast } from "react-toastify";
-import { customFetch } from "../utils";
-
+import { useLoaderData } from "react-router-dom";
 import day from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-export default function OrderList() {
+day.extend(advancedFormat);
+
+const OrdersList = () => {
   const { orders, meta } = useLoaderData();
 
   return (
@@ -12,8 +11,9 @@ export default function OrderList() {
       <h4 className="mb-4 capitalize">
         total orders : {meta.pagination.total}
       </h4>
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto">
         <table className="table table-zebra">
+          {/* head */}
           <thead>
             <tr>
               <th>Name</th>
@@ -28,8 +28,7 @@ export default function OrderList() {
               const id = order.id;
               const { name, address, numItemsInCart, orderTotal, createdAt } =
                 order.attributes;
-
-              const date = day(createdAt).format("hh:mm a - MMM D, YYYY ");
+              const date = day(createdAt).format("hh:mm a - MMM Do, YYYY");
               return (
                 <tr key={id}>
                   <td>{name}</td>
@@ -45,4 +44,5 @@ export default function OrderList() {
       </div>
     </div>
   );
-}
+};
+export default OrdersList;

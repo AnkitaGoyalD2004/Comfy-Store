@@ -1,7 +1,7 @@
 import SectionTitle from "./SectionTitle";
 import ProductsGrid from "./ProductsGrid";
 
-export default function FeatureProducts() {
+const FeaturedProducts = () => {
   return (
     <>
       <div className="pt-24">
@@ -10,4 +10,5 @@ export default function FeatureProducts() {
       </div>
     </>
   );
-}
+};
+export default FeaturedProducts;
