@@ -3,12 +3,10 @@ import ProductsGrid from "./ProductsGrid";
 
 const FeaturedProducts = () => {
   return (
-    <>
-      <div className="pt-24">
-        <SectionTitle text="Features" />
-        <ProductsGrid />
-      </div>
-    </>
+    <div className="pt-24">
+      <SectionTitle text="Features" />
+      <ProductsGrid />
+    </div>
   );
 };
 export default FeaturedProducts;

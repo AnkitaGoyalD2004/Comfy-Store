@@ -2,14 +2,13 @@ const About = () => {
   return (
     <>
       <div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
-        x
         <h1 className="text-4xl font-bold leading-none tracking-tight sm:text-6xl">
           We love
         </h1>
         <div className="stats bg-primary shadow">
           <div className="stat">
-            <div className="stat-title text-primary-content text-4xl font-bold tracking-widest">
-              comfy
+            <div className="stat-title text-primary-content text-4xl font-bold tracking-widest back bg-pink-500 bg-opacity-100">
+              <b> comfy </b>
             </div>
           </div>
         </div>

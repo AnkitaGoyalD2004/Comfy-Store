@@ -9,21 +9,23 @@ const ComplexPaginationContainer = () => {
   const handlePageChange = (pageNumber) => {
     const searchParams = new URLSearchParams(search);
     searchParams.set("page", pageNumber);
-    navigate(`${pathname} ? ${searchParams.toString()}`);
+    navigate(`${pathname}?${searchParams.toString()}`);
   };
+
   const addPageButton = ({ pageNumber, activeClass }) => {
     return (
       <button
         key={pageNumber}
         onClick={() => handlePageChange(pageNumber)}
         className={`btn btn-xs sm:btn-md border-none join-item ${
-          activeClass ? "bg-base-300 border-base-300" : ""
+          activeClass ? "bg-base-300 border-base-300 " : ""
         }`}
       >
         {pageNumber}
       </button>
     );
   };
+
   const renderPageButtons = () => {
     const pageButtons = [];
     // first button
@@ -53,10 +55,7 @@ const ComplexPaginationContainer = () => {
 
     // last button
     pageButtons.push(
-      addPageButton({
-        pageNumber: pageCount,
-        activeClass: page === pageCount,
-      })
+      addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
     );
     return pageButtons;
   };
