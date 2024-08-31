@@ -1,8 +1,17 @@
-const Loading = () => {
+// const Loading = () => {
+//   return (
+//     <div className="h-screen flex items-center justify-center">
+//       <span className="loading loading-ring loading-lg" />
+//     </div>
+//   );
+// };
+// export default Loading;
+const Loading = ()=>{ 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <span className="loading loading-ring loading-lg" />
-    </div>
-  );
-};
+      <div className='h-screen flex items-center justify-center'>
+        <span className='loading loading-bars text-accent loading-lg' />
+      </div>
+    );
+}
+
 export default Loading;

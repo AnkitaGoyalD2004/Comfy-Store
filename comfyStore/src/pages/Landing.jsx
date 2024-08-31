@@ -1,26 +1,16 @@
-import { FeaturedProducts, Hero } from "../components";
+import { FeaturedProducts, Hero } from '../components';
 
-import { customFetch } from "../utils";
-const url = "/products?Dfeatured=true";
 
-const featuredProductsQuery = {
-  queryKey: ["featuredProducts"],
-  queryFn: () => customFetch(url),
-};
+//fast refresh is enabled only if - file exports only a component
+//so i made a new file named loaders
 
-export const loader = (queryClient) => async () => {
-  const response = await queryClient.ensureQueryData(featuredProductsQuery);
+const Landing = ()=>{
+    return (
+        <>
+        <Hero></Hero>
+        <FeaturedProducts></FeaturedProducts>
+        </>
+    );
+}
 
-  const products = response.data.data;
-  return { products };
-};
-
-const Landing = () => {
-  return (
-    <>
-      <Hero />
-      <FeaturedProducts />
-    </>
-  );
-};
 export default Landing;

@@ -21,7 +21,10 @@ const Hero = () => {
           qui lorem cupidatat commodo.
         </p>
         <div className="mt-10 ">
-          <Link to="products" className="btn btn-primary ">
+          <Link
+            to="products"
+            className="btn btn-primary  bg-blue-400 bg-opacity-100 "
+          >
             Our Products
           </Link>
         </div>
