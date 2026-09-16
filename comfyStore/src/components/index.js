@@ -1,5 +1,6 @@
-export { default as CartItem, default as CartItemsList } from './CartItemsList';
-export { default as CartTotals } from './CartTotals';
+export { default as CartItem } from './CartItem';
+export { default as CartItemsList } from './cartItemsList';
+export { default as CartTotals } from './cartTotals';
 export { default as CheckoutForm } from './CheckoutForm';
 export { default as ComplexPaginationContainer } from './ComplexPaginationContainer';
 export { default as ErrorElement } from './ErrorElement';
@@ -16,4 +17,3 @@ export { default as PaginationContainer } from './PaginationContainer';
 export { default as ProductsContainer } from './ProductsContainer';
 export { default as SectionTitle } from './SectionTitle';
 export { default as SubmitBtn } from './SubmitBtn';
-
